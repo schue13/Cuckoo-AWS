@@ -298,6 +298,7 @@ class AWS(Machinery):
             }],
             TagSpecifications=[{"ResourceType": "instance", "Tags": tags}])
         new_instance = response[0]
+        time.sleep(1)
         new_instance.modify_attribute(SourceDestCheck={'Value': False})
         log.debug("Created %s\n%s", new_instance.id, repr(response))
         return new_instance
